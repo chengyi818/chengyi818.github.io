@@ -8,8 +8,7 @@ comments: true
 
 
 
-![_config.yml]({{ site.baseurl }}/images/20150426centurypark/century01.JPG)
-![_config.yml]({{ site.baseurl }}/images/20150426centurypark/century02.JPG)
-![_config.yml]({{ site.baseurl }}/images/20150426centurypark/century03.JPG)
-![_config.yml]({{ site.baseurl }}/images/20150426centurypark/century04.JPG)
-
+![_config.yml]({{ site.baseurl }}/public/img/20150426centurypark/century01.JPG)
+![_config.yml]({{ site.baseurl }}/public/img/20150426centurypark/century02.JPG)
+![_config.yml]({{ site.baseurl }}/public/img/20150426centurypark/century03.JPG)
+![_config.yml]({{ site.baseurl }}/public/img/20150426centurypark/century04.JPG)

@@ -8,12 +8,12 @@ comments: true
 
 
 
-![_config.yml]({{ site.baseurl }}/images/20150509OrientalPearl/R01.JPG)
-![_config.yml]({{ site.baseurl }}/images/20150509OrientalPearl/R02.JPG)
-![_config.yml]({{ site.baseurl }}/images/20150509OrientalPearl/R04.JPG)
-![_config.yml]({{ site.baseurl }}/images/20150509OrientalPearl/R05.JPG)
-![_config.yml]({{ site.baseurl }}/images/20150509OrientalPearl/R06.JPG)
-![_config.yml]({{ site.baseurl }}/images/20150509OrientalPearl/R07.JPG)
-![_config.yml]({{ site.baseurl }}/images/20150509OrientalPearl/R08.JPG)
-![_config.yml]({{ site.baseurl }}/images/20150509OrientalPearl/R09.JPG)
-![_config.yml]({{ site.baseurl }}/images/20150509OrientalPearl/R10.JPG)
+![_config.yml]({{ site.baseurl }}/public/img/20150509OrientalPearl/R01.JPG)
+![_config.yml]({{ site.baseurl }}/public/img/20150509OrientalPearl/R02.JPG)
+![_config.yml]({{ site.baseurl }}/public/img/20150509OrientalPearl/R04.JPG)
+![_config.yml]({{ site.baseurl }}/public/img/20150509OrientalPearl/R05.JPG)
+![_config.yml]({{ site.baseurl }}/public/img/20150509OrientalPearl/R06.JPG)
+![_config.yml]({{ site.baseurl }}/public/img/20150509OrientalPearl/R07.JPG)
+![_config.yml]({{ site.baseurl }}/public/img/20150509OrientalPearl/R08.JPG)
+![_config.yml]({{ site.baseurl }}/public/img/20150509OrientalPearl/R09.JPG)
+![_config.yml]({{ site.baseurl }}/public/img/20150509OrientalPearl/R10.JPG)

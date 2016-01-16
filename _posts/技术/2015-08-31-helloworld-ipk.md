@@ -103,7 +103,7 @@ define Package/helloworld/install
 	$(INSTALL_DIR) $(1)/bin
 	$(INSTALL_BIN) $(PKG_BUILD_DIR)/helloworld $(1)/bin/
 endef
-	
+
 $(eval $(call BuildPackage,helloworld))
 ```
 如下是最后的文件树形图:
@@ -124,7 +124,7 @@ $(eval $(call BuildPackage,helloworld))
     PKG_MD5SUM：源代码文件的效验码。用于核对软件包是否下载正确。
     PKG_CAT：源代码文件的解压方法。包括zcat, bzcat, unzip等。
     PKG_BUILD_DIR：软件包编译目录。它的父目录为$(BUILD_DIR)。
-        
+
 第7行`include $(INCLUDE_DIR)/package.mk`
 :   一般在软件包的基本信息完成后再引入，他定义了用户态软件包的规则。编译包分为用户态和内核模块，用户态软件包使用Package，内核模块使用KernelPackage.`$(INCLUDE_DIR)/Kernel.mk`文件对于软件包为内核时不可缺少，`$(INCLUDE_DIR)/package.mk`应用在用户态。接下来讲述用户态软件包。用户程序的编译包以`Package/`开头，然后接着软件名，在Package定义中的软件名可以与软件包名不一样，而且可以多个定义。
 
@@ -153,7 +153,7 @@ MAINTAINER ： 维护者选项。
      对于一般软件包：`$(eval $(call Package,$(PKG_NAME)))`
      或对于内核模块：`$(eval $(call KernelPackage,$(PKG_NAME)))`
      如果一个软件包有多个程序，例如：一个应用程序有自己的内核模块，上面使用的`PKG_NAME`需要灵活变通。`eval`函数可能设计多个。也可以当成多个软件包处理。
-     
+
 这里简单地解释了Makefile文件,更具体地请[参考](http://wiki.openwrt.org/doc/devel/packages)
 
 ---
@@ -191,4 +191,3 @@ $find bin/ -name "helloworld*.ipk"
 ---
 ##尾记
 我比较薄弱的是Makefile方面的知识,刚好加强下这个方面的学习,欢迎交流~
-

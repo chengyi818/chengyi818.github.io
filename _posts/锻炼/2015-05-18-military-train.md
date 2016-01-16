@@ -8,11 +8,10 @@ comments: true
 
 
 
-![_config.yml]({{ site.baseurl }}/images/20150518militarytrain/IMG_1.JPG)
-![_config.yml]({{ site.baseurl }}/images/20150518militarytrain/IMG_2.JPG)
-![_config.yml]({{ site.baseurl }}/images/20150518militarytrain/IMG_3.JPG)
-![_config.yml]({{ site.baseurl }}/images/20150518militarytrain/IMG_4.JPG)
-![_config.yml]({{ site.baseurl }}/images/20150518militarytrain/IMG_5.JPG)
-![_config.yml]({{ site.baseurl }}/images/20150518militarytrain/IMG_6.JPG)
-![_config.yml]({{ site.baseurl }}/images/20150518militarytrain/IMG_7.JPG)
-
+![_config.yml]({{ site.baseurl }}/public/img/20150518militarytrain/IMG_1.JPG)
+![_config.yml]({{ site.baseurl }}/public/img/20150518militarytrain/IMG_2.JPG)
+![_config.yml]({{ site.baseurl }}/public/img/20150518militarytrain/IMG_3.JPG)
+![_config.yml]({{ site.baseurl }}/public/img/20150518militarytrain/IMG_4.JPG)
+![_config.yml]({{ site.baseurl }}/public/img/20150518militarytrain/IMG_5.JPG)
+![_config.yml]({{ site.baseurl }}/public/img/20150518militarytrain/IMG_6.JPG)
+![_config.yml]({{ site.baseurl }}/public/img/20150518militarytrain/IMG_7.JPG)
