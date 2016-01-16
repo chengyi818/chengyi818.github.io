@@ -1,8 +1,8 @@
 ---
 layout: post
 title: openwrt简单ipk生成及Makefile解释
-category: openwrt
-tags: ipk
+category: 技术
+tags: ipk openwrt
 comments: true
 ---
 
