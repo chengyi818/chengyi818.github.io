@@ -204,6 +204,7 @@ $find bin/ -name "helloworld*.ipk"
 
 至此我们已经生成简单的ipk,恭喜:)
 最后可以通过[winscp](http://pan.baidu.com/s/1bnHfXyJ),将ipk[安装](http://www.openwrt.org.cn/bbs/forum.php?mod=viewthread&tid=3238)到开发板中.
+
 ![结局](http://i3.tietuku.com/1ac2f9939aa02cb9.jpg)
 
 ---
