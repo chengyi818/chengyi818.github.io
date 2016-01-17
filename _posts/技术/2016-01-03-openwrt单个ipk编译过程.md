@@ -32,9 +32,11 @@ package.mk
 其余的我们可以认为是变量的赋值语句,很明显使用它们的地方并不在这里.关于模板和变量值的说明及作用.,你可以参照[官方说明](https://wiki.openwrt.org/doc/devel/packages),也可以在网上找到一大堆资料.
 
 最后,最重要的语句是这一句:
+
 ```
 $(eval $(call BuildPackage,dropbear))
 ```
+
 这里将会把**dropbear**作为参数值传给函数**BuildPackage**
 
 Tips
@@ -45,6 +47,7 @@ Tips
 
 ###BuildPackage分析
 **BuildPackage**的定义在**package.mk**中,定义如下:
+
 ```
 define BuildPackage
   $(Build/IncludeOverlay)
