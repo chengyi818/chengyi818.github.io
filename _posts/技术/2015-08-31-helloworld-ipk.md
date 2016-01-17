@@ -117,7 +117,9 @@ $(eval $(call BuildPackage,helloworld))
 ```
 
 如下是最后的文件树形图:
+
 ![树形图](http://i3.tietuku.com/8e9f244567388099.jpg)
+
 ---
 
 ### 3.Makefile注释
