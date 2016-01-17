@@ -31,12 +31,15 @@ comments: true
 下面我们开始,我们遵循传统以helloworld开始.
 ### 1.创建helloworld项目
 首先我们新建helloworld.c文件和对应的Makefile文件
+
 ```
 $mkdir -p ~/temp/hellworld/src
 $cd ~/temp/helloworld/src
 $touch helloworld.c Makefile
 ```
+
 如下为helloworld.c的内容:
+
 ```
 #include <stdio.h>
 int main()
@@ -45,7 +48,9 @@ int main()
     return 0;
 }
 ```
+
 如下为Makefile文件的内容:
+
 ```
 helloworld : helloworld.o
 	$(CC) $(LDFLAGS) helloworld.o -o helloworld
@@ -69,12 +74,15 @@ $(CC)
 ---
 ### 2.创建helloworld包
 下一步我们要创建一个新的Makefile文件,在这个文件中我们要描述的是helloworld包的信息,比如:如何配置,如何编译,如何打包,安装位置等.
+
 ```
 $cd ~/temp/helloworld
 $touch Makefile
 ```
+
 如下为Makefile内容:
-```bash
+
+```
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=helloworld
@@ -107,6 +115,7 @@ endef
 
 $(eval $(call BuildPackage,helloworld))
 ```
+
 如下是最后的文件树形图:
 ![树形图](http://i3.tietuku.com/8e9f244567388099.jpg)
 ---
@@ -161,14 +170,18 @@ MAINTAINER ： 维护者选项。
 ### 4.编译软件
 至此我们的软件已经基本完成,下面进行编译
 首先将文件文件夹拷贝到**openwrt目录中的package文件中**,这里我的源码目录为`~/openwrt`,你需要把openwrt目录替换为你的openwrt源码目录.
+
 ```
 $mv ~/temp/helloworld ~/openwrt/package
 ```
+
 然后回到项目主目录运行make menuconfig
+
 ```
 $cd ~/openwrt
 $make menuconfig
 ```
+
 按"/"后,输入helloworld,搜索对应的路径
 
 ![搜索](http://i3.tietuku.com/3376b2fa48621a57.png)
@@ -177,14 +190,18 @@ $make menuconfig
 接着到Utilities目录下,找到helloworld并按空格打开;
 ![打开编译开关](http://i3.tietuku.com/b389aec1d8d367ee.png)
 保存后退出;
+
 ```
 $cd ~/openwrt
 $make package/helloworld/compile V=s
 ```
+
 编译完成后,ipk应该已经生成
+
 ```
 $find bin/ -name "helloworld*.ipk"
 ```
+
 至此我们已经生成简单的ipk,恭喜:)
 最后可以通过[winscp](http://pan.baidu.com/s/1bnHfXyJ),将ipk[安装](http://www.openwrt.org.cn/bbs/forum.php?mod=viewthread&tid=3238)到开发板中.
 ![结局](http://i3.tietuku.com/1ac2f9939aa02cb9.jpg)
