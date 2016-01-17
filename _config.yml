@@ -26,7 +26,7 @@ favicon: /public/img/banzhuan01.jpg
 
 # google analytics 设置
 ga:
-  id:
+  id: UA-72539373-1
   url: http://chengyi818.github.io
 
 # disqus 设置
