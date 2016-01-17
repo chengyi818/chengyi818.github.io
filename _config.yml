@@ -33,13 +33,12 @@ disqus:
   shortname: chengyi818
 
 # 主题设置，自动激活某个标签
-active: 读书
+active: 侣行
 
 # 首页除了最新文章外显示分类
 cates:
   - openwrt
 
-# 中文本地化
 locals:
   tags: 标签
   about: 关于
