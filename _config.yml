@@ -1,7 +1,10 @@
 permalink: /:year/:month/:day/:title.html
 paginate: 10
-markdown: redcarpet
 highlighter: pygments
+markdown: kramdown
+kramdown:
+   input: GFM
+   hard_wrap: false
 
 # 作者信息
 author:
