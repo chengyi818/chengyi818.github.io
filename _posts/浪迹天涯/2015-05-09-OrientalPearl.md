@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 东方明珠一日游
-category: 侣行 
+category: 侣行
 comments: true
 ---
 仲春时分，与女友并三五好友，登明珠而远眺，览浦江形胜，不亦快哉！
