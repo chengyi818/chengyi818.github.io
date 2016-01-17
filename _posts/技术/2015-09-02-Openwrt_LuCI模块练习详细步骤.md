@@ -59,10 +59,12 @@ comments: true
 首先,嗯~
 你得有环境,得有电,有源码,编译过简单的ipk.如果没有,请[回炉](http://www.cnblogs.com/chengyi818/p/4774043.html)重造.
 其次,建立相应的文件夹及文件.至于linux操作神马的,我相信你一定没有问题.
+
 ```
 $mkdir -p ~/temp/addtest
 $cd ~/temp/addtest
 ```
+
 最终文件树形图
 ![树形图](http://i3.tietuku.com/e0e8a0b049ed0f45.jpg)
 骨架已经有了,下面只需要往里面填肉了,是不是感觉很快~
@@ -71,10 +73,13 @@ $cd ~/temp/addtest
 ---
 ###controller
 前面我们提到,controller主要用于控制页面按钮位置,以及调用的功能.首先来编辑这个文件.
+
 ```
 $vim ~/temp/addtest/files/usr/lib/lua/luci/controller/addtest.lua
 ```
+
 代码如下:
+
 ```
 module("luci.controller.addtest",package.seeall)
 
@@ -93,7 +98,9 @@ function action_info()
     luci.template.render("addtest_info",{info=info})
 end
 ```
+
 格式模板:
+
 ```
 module("luci.controller.控制器名", package.seeall)
 
@@ -101,6 +108,7 @@ function index()
         entry(路径, 调用目标, _("显示名称"), 显示顺序)
         end
 ```
+
 这个脚本文件可以分为3块:第1行,3~7行,9~16行
 
 第1行
@@ -135,15 +143,19 @@ function index()
 ###UCI
 UCI是openwrt的配置管理机制,它将配置统一放到`/etc/config`文件夹下.详细地介绍请参考[这里](http://www.leiphone.com/news/201406/diy-a-smart-router-topic-system-configuration.html).
 下面来编辑这个文件
+
 ```
 $vim ~/temp/addtest/files/etc/config/addtest
 ```
+
 代码如下:
+
 ```
 config arguments
     option interval ''
     option content ''
 ```
+
 Section开始语法: `config '类型' '名字'`
 参数定义语法: `option '键' '值'`
 列表定义语法: `list '集合名字' '值'`
@@ -153,10 +165,13 @@ Section开始语法: `config '类型' '名字'`
 ---
 ###Model
 在**controller**章节中,我们提到`cbi`会调用到`model`文件夹中的`addtest.lua`文件.下面我们来编辑它.
+
 ```
 $vim ~/temp/addtest/files/usr/lib/lua/luci/model/cbi/addtest.lua
 ```
+
 代码如下:
+
 ```
 m=Map("addtest",translate("Luci practice"),translate("fat cheng's test"))
 
@@ -175,6 +190,7 @@ end
 
 return m
 ```
+
 下面我们来解释下这个文件.
 
 第1行
@@ -207,6 +223,7 @@ return m
 ###init.d
 上一节我们已经可以读写配置了,怎么根据配置来进行操作呢?这是我们这一节要谈的.我们来编辑`~/temp/addtest/files/etc/init.d/addtestd`这个文件.
 代码如下:
+
 ```
 #!/bin/sh /etc/rc.common
 START=50
@@ -239,6 +256,7 @@ stop()
     echo "addtest has stoped"
 }
 ```
+
 第1行
 :   Linux 系统根据 "#!" 及该字串后面的信息确定该文件的类型,表示这个文件需要由/bin/sh和/etc/rc.common来解释执行.
 
@@ -264,10 +282,13 @@ stop()
 ---
 ###src
 前一节,我们谈到`run_addtest`调用可执行文件`addtest`,现在我们编辑这部分内容
+
 ```
 $vim ~/temp/addtest/files/src/addtest.c
 ```
+
 代码如下:
+
 ```
 #include <stdio.h>
 #include <string.h>
@@ -289,6 +310,7 @@ int main(int argc, char *argv[])
     return 0;
 }
 ```
+
 这部分代码比较简短,我们不再解释.需要掌握的点有:
 >1.`argc`和`argv[]`的使用方法
 2.`fopen`函数,`fclose`函数以及`fprintf`函数的使用方法
@@ -297,10 +319,13 @@ int main(int argc, char *argv[])
 
 通过这个可执行文件,我们周期性地将时间戳和内容写入了`/tmp/addtest`文件.
 最后我们写一个简单的Makefile:
+
 ```
 $vim $vim ~/temp/addtest/files/src/Makefile
 ```
+
 代码如下:
+
 ```
 addtest : addtest.o
 	$(CC) addtest.o -o addtest
@@ -318,6 +343,7 @@ clean :
 下面我们来编辑这个页面,
 `$vim ~/temp/addtest/files/usr/lib/lua/luci/view/addtest_info.htm`
 代码如下:
+
 ```
 <%+header%>
 <h2><a id="content" name="content"><%:Addtest Info%></a></h2>
@@ -326,15 +352,19 @@ clean :
 </div>
 <%+footer%>
 ```
+
 这部分和传统的`html`很类似,我主要是根据其他页面照猫画虎,不是很美观.有机会还要加强这个方面的学习.
 
 ---
 ###Makefile
 不知不觉,我们居然已经将代码全部写完了,竟还有点恋恋不舍呢.下面我们用一个`Makefie`文件将它们打包生成一个ipk文件.
+
 ```
 $vim ~/temp/addtest/Makefile
 ```
+
 代码如下:
+
 ```
 include $(TOPDIR)/rules.mk
 
@@ -381,6 +411,7 @@ endef
 
 $(eval $(call BuildPackage,$(PKG_NAME)))
 ```
+
 Makefile的解释,请参见[拙作](http://www.cnblogs.com/chengyi818/p/4774043.html).我们这里稍作补充.
 
 26~29行
@@ -393,9 +424,11 @@ Makefile的解释,请参见[拙作](http://www.cnblogs.com/chengyi818/p/4774043.
 ###编译&安装
 简直像裹脚布一样,又臭又长.不要说读了,我自己写的都快有点受不了了.读到这里的人真是辛苦了,下面到了我们收获果实的时候了.
 将文件拷贝到源码目录的`package`目录下.其余部分,请参考[拙作](http://www.cnblogs.com/chengyi818/p/4774043.html)
+
 ```
 $cp ~/temp/addtest ~/openwrt/package
 ```
+
 把它拷贝到你的开发板中,试试看.
 
 ---
