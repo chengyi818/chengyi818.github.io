@@ -191,6 +191,7 @@ $make menuconfig
 
 接着到Utilities目录下,找到helloworld并按空格打开;
 ![打开编译开关](http://i3.tietuku.com/b389aec1d8d367ee.png)
+
 保存后退出;
 
 ```
