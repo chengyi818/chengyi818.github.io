@@ -6,11 +6,7 @@ tags: makefile openwrt
 comments: true
 ---
 
-
-
 本周成胖子每周一博到了第四周^_^
-
-[TOC]
 
 ##前言
 前一篇,我们大概描述了整个镜像文件的生成过程.本周我们来解析主Makefile,看看主要编译过程是怎么产生的.
