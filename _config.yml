@@ -25,7 +25,7 @@ rss_url:
 
 # gavatar头像及Favicon
 gavatar: /public/img/love.jpg
-favicon: /public/img/banzhuan01.jpg
+favicon: /public/img/love.jpg
 
 # google analytics 设置
 ga:
