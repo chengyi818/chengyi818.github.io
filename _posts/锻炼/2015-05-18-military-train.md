@@ -3,6 +3,7 @@ layout: post
 title: 新动力军事训练
 category: 锻炼
 comments: true
+analytics: true
 ---
 过去的一周，参加了公司的应届生军训，很辛苦也很难忘。留影纪念！
 

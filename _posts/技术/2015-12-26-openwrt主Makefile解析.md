@@ -4,6 +4,7 @@ title: 主Makefile解析
 category: 技术
 tags: makefile openwrt
 comments: true
+analytics: true
 ---
 
 本周成胖子每周一博到了第四周^_^

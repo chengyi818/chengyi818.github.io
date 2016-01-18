@@ -4,6 +4,7 @@ title: Openwrt LuCI模块练习详细步骤
 category: 技术
 tags: openwrt luci
 comments: true
+analytics: true
 ---
 
 
