@@ -4,6 +4,7 @@ title: openwrt单个ipk编译过程
 category: 技术
 tags: openwrt makefile
 comments: true
+analytics: true
 ---
 
 ---

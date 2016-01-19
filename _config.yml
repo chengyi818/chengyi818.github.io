@@ -12,9 +12,8 @@ author:
   name: Yi Ting
   email: chengyi818@foxmail.com
   link:
-  weibo:
+  weibo: http://weibo.com/5799947471/profile?topnav=1&wvr=6
   github: http://github.com/chengyi818
-  music:
   linkedin: https://www.linkedin.com/home?trk=nav_responsive_tab_home
 
 # 站点信息
@@ -31,7 +30,7 @@ favicon: /public/img/love.jpg
 # google analytics 设置
 ga:
   id: UA-72539373-1
-  url: http://chengyi818.github.io
+  url: yiting.co
 
 # disqus 设置
 disqus:
@@ -42,7 +41,7 @@ active: 侣行
 
 # 首页除了最新文章外显示分类
 cates:
-  - openwrt
+  - lxc
 
 locals:
   index: 主页
