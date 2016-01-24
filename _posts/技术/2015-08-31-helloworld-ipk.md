@@ -64,10 +64,10 @@ clean :
 ```
 
 $(CC)
-:   这个值由其他Makefile文件规定,表示我们使用编译器.
+>   这个值由其他Makefile文件规定,表示我们使用编译器.
 
-\$(LDFLAGS)\&$(CFLAGS)
-:   这个表示编译器的一些选项,这里是可选的,去掉也没有问题.
+$(LDFLAGS)\$(CFLAGS)
+>   这个表示编译器的一些选项,这里是可选的,去掉也没有问题.
 
 下面可以输入`$make`看看有没有问题,注意Makefile文件的书写格式.
 最后,输入`$make clean`来清理掉生成的二进制文件.因为上一步`make`所使用的编译器并不是我们的交叉编译链,生成的二进制文件并不能在开发板中运行.上一步只是验证我们的src中的内容正确与否.
@@ -126,46 +126,76 @@ $(eval $(call BuildPackage,helloworld))
 ### 3.Makefile注释
 
 第1行`include $(TOPDIR)/rules.mk`
-:   一般在Makefile的开头,包含了包的基本信息,比如Makefile中的`$(BUILD_DIR)`,`$(INCLUDE_DIR)`,`$(CP)`,`$(INSTALL_DIR)`,`$(INSTALL_BIN)`都是这里定义的.具体内容可以到源码主目录下,查看`rules.mk`文件.
+>   一般在Makefile的开头,包含了包的基本信息,
+
+>比如Makefile中的`$(BUILD_DIR)`,`$(INCLUDE_DIR)`,`$(CP)`,`$(INSTALL_DIR)`,`$(INSTALL_BIN)`都是这里定义的.具体内容可以到源码主目录下,查看`rules.mk`文件.
 
 3~5行,软件包的信息均以“PKG_”开头，其意思和作用如下
-:   PKG_NAME：软件包名称，将在menuconfig和ipkg可以看到。
-    PKG_VERSION：软件版本号。
-    PKG_RELEASE：Makefile的版本号
-    PKG_SOURCE：源代码的文件名。
-    PKG_SOURCE_URL：源代码的下载网站位置。
-    PKG_MD5SUM：源代码文件的效验码。用于核对软件包是否下载正确。
-    PKG_CAT：源代码文件的解压方法。包括zcat, bzcat, unzip等。
-    PKG_BUILD_DIR：软件包编译目录。它的父目录为$(BUILD_DIR)。
+>   PKG_NAME：软件包名称，将在menuconfig和ipkg可以看到。
+
+>    PKG_VERSION：软件版本号。
+
+>    PKG_RELEASE：Makefile的版本号
+
+>    PKG_SOURCE：源代码的文件名。
+
+>    PKG_SOURCE_URL：源代码的下载网站位置。
+
+>    PKG_MD5SUM：源代码文件的效验码。用于核对软件包是否下载正确。
+
+>    PKG_CAT：源代码文件的解压方法。包括zcat, bzcat, unzip等。
+
+>    PKG_BUILD_DIR：软件包编译目录。它的父目录为$(BUILD_DIR)。
 
 第7行`include $(INCLUDE_DIR)/package.mk`
-:   一般在软件包的基本信息完成后再引入，他定义了用户态软件包的规则。编译包分为用户态和内核模块，用户态软件包使用Package，内核模块使用KernelPackage.`$(INCLUDE_DIR)/Kernel.mk`文件对于软件包为内核时不可缺少，`$(INCLUDE_DIR)/package.mk`应用在用户态。接下来讲述用户态软件包。用户程序的编译包以`Package/`开头，然后接着软件名，在Package定义中的软件名可以与软件包名不一样，而且可以多个定义。
+>   一般在软件包的基本信息完成后再引入，他定义了用户态软件包的规则。
+
+>编译包分为用户态和内核模块，用户态软件包使用Package，内核模块使用KernelPackage.
+
+>`$(INCLUDE_DIR)/Kernel.mk`文件对于软件包为内核时不可缺少，
+
+>`$(INCLUDE_DIR)/package.mk`应用在用户态。
+
+>接下来讲述用户态软件包。用户程序的编译包以`Package/`开头，然后接着软件名，在Package定义中的软件名可以与软件包名不一样，而且可以多个定义。
 
 9~13行
-:   定义包的名称为`helloworld`
-SECTION : 包的类型为`utils`
-CATEGORY : 目录为Utilitis,即文件在`menuconfig`中的位置;有时还会有`SUBMENU`项,即子目录.
-TITLE : 用于软件包的简短描述,将显示在`menuconfig`中.
-URL ： 软件包的下载位置。
-MAINTAINER ： 维护者选项。
-**DEPENDS** ： 与其他软件的依赖。即如编译或安装需要其他软件时需要说明。如果存在多个依赖，则每个依赖需用空格分开。依赖前使用+号表示默认显示，即对象沒有选中时也会显示，使用@则默认为不显示，即当依赖对象选中后才显示。
+>   定义包的名称为`helloworld`
+
+> SECTION : 包的类型为`utils`
+
+> CATEGORY : 目录为Utilitis,即文件在`menuconfig`中的位置;有时还会有`SUBMENU`项,即子目录.
+
+> TITLE : 用于软件包的简短描述,将显示在`menuconfig`中.
+
+> URL ： 软件包的下载位置。
+
+> MAINTAINER ： 维护者选项。
+
+> **DEPENDS** ： 与其他软件的依赖。即如编译或安装需要其他软件时需要说明。如果存在多个依赖，则每个依赖需用空格分开。依赖前使用+号表示默认显示，即对象沒有选中时也会显示，使用@则默认为不显示，即当依赖对象选中后才显示。
 
 15~17行
-:   软件包的详细描述,将显示在`make menuconfig`中
+>   软件包的详细描述,将显示在`make menuconfig`中
 
 19~23行
-:   编译准备方法，对于网上下载的软件包不需要再描述。对于非网上下载或自行开发的软件包必须说明编译准备方法。本文所用的准备方法就是首先创建软件包目录，然后将源码拷贝到刚刚创建的目录中。按OpenWrt的习惯，一般把自己设计的程序全部放在src目录下。
+>   编译准备方法，对于网上下载的软件包不需要再描述。对于非网上下载或自行开发的软件包必须说明编译准备方法。
+
+> 本文所用的准备方法就是首先创建软件包目录，然后将源码拷贝到刚刚创建的目录中。按OpenWrt的习惯，一般把自己设计的程序全部放在src目录下。
 
 25~29行
-:   软件包的安装方法，包括一系列拷贝编译好的文件到指定位置。调用时会带一个参数，就是嵌入系统的镜像文件系统目录，因此$(1)表示嵌入系统的镜像目录。
-`INSTALL_DIR:=install -d -m0755` : 创建所属用戶可读写、执行，其他用戶可读可执行的目录
-`INSTALL_BIN:=install -m0755` : 编译好的文件到镜像文件目录
+>   软件包的安装方法，包括一系列拷贝编译好的文件到指定位置。调用时会带一个参数，就是嵌入系统的镜像文件系统目录，因此$(1)表示嵌入系统的镜像目录。
+
+>`INSTALL_DIR:=install -d -m0755` : 创建所属用戶可读写、执行，其他用戶可读可执行的目录
+
+>`INSTALL_BIN:=install -m0755` : 编译好的文件到镜像文件目录
 
 31行 `$(eval $(call BuildPackage,helloworld))`
-:   完成前面定义后，必须使用eval函数实现各种定义。其格式为：
-     对于一般软件包：`$(eval $(call Package,$(PKG_NAME)))`
-     或对于内核模块：`$(eval $(call KernelPackage,$(PKG_NAME)))`
-     如果一个软件包有多个程序，例如：一个应用程序有自己的内核模块，上面使用的`PKG_NAME`需要灵活变通。`eval`函数可能设计多个。也可以当成多个软件包处理。
+>   完成前面定义后，必须使用eval函数实现各种定义。其格式为：
+
+> 对于一般软件包：`$(eval $(call Package,$(PKG_NAME)))`
+
+> 或对于内核模块：`$(eval $(call KernelPackage,$(PKG_NAME)))`
+
+> 如果一个软件包有多个程序，例如：一个应用程序有自己的内核模块，上面使用的`PKG_NAME`需要灵活变通。`eval`函数可能设计多个。也可以当成多个软件包处理。
 
 这里简单地解释了Makefile文件,更具体地请[参考](http://wiki.openwrt.org/doc/devel/packages)
 

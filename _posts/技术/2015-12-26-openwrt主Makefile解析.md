@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 主Makefile解析
+title: openwrt编译(3)_主Makefile解析
 category: 道术
 tags: makefile openwrt
 comments: true
@@ -9,10 +9,10 @@ analytics: true
 
 本周成胖子每周一博到了第四周^_^
 
-##前言
+## 前言
 前一篇,我们大概描述了整个镜像文件的生成过程.本周我们来解析主Makefile,看看主要编译过程是怎么产生的.
 
-##主Makefile结构
+## 主Makefile结构
 我们以`chaos calmer`的代码为例,整个编译的入口是在源码根目录下的Makefile.编译的各种命令都应该在源码根目录下键入.
 整个主Makefile的结构如下:
 
@@ -29,7 +29,7 @@ endif
 根据**Makefile的规则**,在没有指定编译目标的时候,Makefile中的第一个目标将作为默认目标.
 换句话说,当我们执行`make V=s`时,这个时候编译的目标就是`world`.和我们执行`make world V=s`效果是一样的.
 
-##顶层
+## 顶层
 通常在编译时,我们不会定义变量`OPENWRT_BUILD`的值,所以通常我们是会走到顶层的.
 顶层代码如下:
 
@@ -96,7 +96,7 @@ prepare-tmpinfo:
 总之,顶层完成一系列必要的准备工作.对于绝大多数的目标而言,顶层是必经之路.当然,在`toplevel.mk`中,我们也可以看到目标`menuconfig`.也就是说对于目标`menuconfig`而言,将不会执行到第二层的逻辑.
 
 
-##第二层
+## 第二层
 在上面执行完`make prereq`之后,将执行`make world`.
 还记得我们进入顶层后修改了变量`OPENWRT_BUILD`么?当再次执行`make world`的时候,由于条件不满足,我们将直接进入第二层来执行.
 
@@ -117,7 +117,6 @@ rules.mk:
   -include $(TOPDIR)/.config
 endif
 > ```
->
 > 就是包含了我们的配置文件.对于`Makefile`而言,`.config`文件就是一大串变量的定义.Makefile可以直接读取这些定义,从而控制编译过程.
 
 subdir.mk:
@@ -149,7 +148,7 @@ $(eval $(call subdir,$(curdir)))
 比如我们可以看到进入第二层后,`tools/stamp-install`将会最先被执行,也就是主机工具将会最先被编译,安装.我们上一篇提高的整个编译过程能从上图中得出.
 
 
-##尾记
+## 尾记
 1. 想要读懂Makefile,首先要梳理各个依赖关系.而要梳理各个依赖关系,关键要关注冒号和`make -C`
 2. 本周我们解析了主Makefile,在Makefile的执行过程中要理解make的执行过程.先读入Makefile,然后构建依赖关系,最后最先被依赖的目标将会先执行.
 3. 我主要描绘了主要枝干,如果希望了解更多细节,还是要自己去阅读Makefile.

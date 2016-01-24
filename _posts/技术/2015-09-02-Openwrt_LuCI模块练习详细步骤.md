@@ -113,35 +113,34 @@ function index()
 这个脚本文件可以分为3块:第1行,3~7行,9~16行
 
 第1行
-:   说明了模块的名称,本文在controller目录下创建了`addtest.lua`文件,将模板中的控制器名替换为`addtest`即可.
+> 说明了模块的名称,本文在controller目录下创建了`addtest.lua`文件,将模板中的控制器名替换为`addtest`即可.
 
 第3行
-:   第3~7行定义按钮的位置,调用的功能,显示名称.其中第3行和第7行是固定的模板格式,不需要修改
+>  第3~7行定义按钮的位置,调用的功能,显示名称.其中第3行和第7行是固定的模板格式,不需要修改
 
 第4行
-:   entry表示添加新的模块.
-第一个参数`{"admin","system","addtest"}`表示按钮的位置.`admin`表示我们这个功能只有以管理员身份登录页面才可以看到.`system`表示一级菜单名,`addtest`则是一级菜单下的子菜单.
-第二个参数`alias("admin","system","addtest","set")`表示调用的功能.这个按钮没有独立的功能,而是将它关联到它的下一级子菜单`set`.
+>   entry表示添加新的模块.
+第一个参数`{"admin","system","addtest"}`表示按钮的位置.`admin`表示我们这个功能只有以管理员身份登录页面才可以看到.`system`表示一级菜单名,`addtest`则是一级菜单下的子菜单.第二个参数`alias("admin","system","addtest","set")`表示调用的功能.这个按钮没有独立的功能,而是将它关联到它的下一级子菜单`set`.
 第三个参数`_("AddTest")`表示显示名称,可选.如果页面按钮想做成中文,可以在这里设置.
 第四个参数`99`表示显示顺序的优先级,Luci根据这个值为同一父菜单的所有子菜单排序.
 
 第5行
-:   第一个参数`{"admin","system","addtest","set"}`表示在`addtest`下再增加一个子选项`set`.
+> 第一个参数`{"admin","system","addtest","set"}`表示在`addtest`下再增加一个子选项`set`.
 第二个参数`cbi("addtest")`表示调用cbi模块,这里将会调用到`/usr/lib/lua/luci/model/cbi/addtest.lua`
 
 第6行
-:   第二个参数`call("action_info")`表示执行指定方法,这里将会调用我们下面写的`acttion_info`函数.
+> 第二个参数`call("action_info")`表示执行指定方法,这里将会调用我们下面写的`acttion_info`函数.
 
 备注
 :   关于`entry`第二个参数调用目标.我们还有一个`template`没有涉及,它表示访问指定页面.比如`template(addtest_info)`将会直接访问`/usr/lib/lua/luci/view/addtest_info.htm`.
 
 9~16行
-:   这里使用lua语言调用`nixio`接口写了一个简单的函数,首先判断文件是否存在,然后读取其中的内容赋值给变量`info`,最后访问指定页面`/usr/lib/lua/luci/view/addtest_info.htm`,同时将变量`info`传递过去.
+>  这里使用lua语言调用`nixio`接口写了一个简单的函数,首先判断文件是否存在,然后读取其中的内容赋值给变量`info`,最后访问指定页面`/usr/lib/lua/luci/view/addtest_info.htm`,同时将变量`info`传递过去.
 [luci接口手册](http://luci.subsignal.org/api/luci/)
 [nixio接口手册](http://luci.subsignal.org/api/nixio/)
 
 ---
-###UCI
+### UCI
 UCI是openwrt的配置管理机制,它将配置统一放到`/etc/config`文件夹下.详细地介绍请参考[这里](http://www.leiphone.com/news/201406/diy-a-smart-router-topic-system-configuration.html).
 下面来编辑这个文件
 
@@ -164,7 +163,7 @@ Section开始语法: `config '类型' '名字'`
 简单解释下,我们在`/etc/config`下新建一个名为`addtest`的配置文件,其中类型为`arguments`,名字省略.有两个键,一个名为`interval`用来存时间间隔.一个名为`content`用来存准备周期性输入的内容.
 
 ---
-###Model
+### Model
 在**controller**章节中,我们提到`cbi`会调用到`model`文件夹中的`addtest.lua`文件.下面我们来编辑它.
 
 ```
@@ -195,33 +194,33 @@ return m
 下面我们来解释下这个文件.
 
 第1行
-:   模板`m = Map("配置文件文件名", "配置页面标题", "配置页面说明")`   
+>   模板`m = Map("配置文件文件名", "配置页面标题", "配置页面说明")`   
 第一个参数:上一步我们新建配置文件`/etc/config/addtest`.这里就是建立与配置文件的联系.
 第二,三两个参数,则是页面的主标题和副标题.还不清楚的话,翻上去看看最终效果图,看看它们在哪里.
 
 第3行
-:   在一个配置文件中可能有很多Section,所以我们需要创建与配置文件中我们想要的Section的联系.
+>   在一个配置文件中可能有很多Section,所以我们需要创建与配置文件中我们想要的Section的联系.
 有两种方式可以选择:NamedSection(name,type,title,description)和TypedSection(type,title,description),前者根据配置文件中的Section名，而后者根据配置文件中的Section类型.我们选用了第二种.
 
 第4行
-:   设定不允许增加或删除Section
+>   设定不允许增加或删除Section
 
 第5行
-:   设定显示Section的名称,这里建议你可以试试设定为`true`,看看会发生什么.
+>   设定显示Section的名称,这里建议你可以试试设定为`true`,看看会发生什么.
 
 7~9行
-:   接着则是建立与Section中的option之间的联系.模板`s:option(交互形式,option键值,显示名称)`.
+>   接着则是建立与Section中的option之间的联系.模板`s:option(交互形式,option键值,显示名称)`.
 第一个参数:常见的交互形式有Value(文本框),ListValue(下拉框),Flag(选择框).,不知道为啥我打不开[官方文档](http://luci.subsignal.org/trac/wiki/Documentation/CBI),这里也可以[参考](http://blog.csdn.net/qq_21949217/article/details/44151595)
 第二个参数表示在配置文件中的option的键值
 第三个参数表示,你希望在页面上呈现的名称.
 创建后开发者无需考虑读取以及写入配置文件的问题，系统会自动处理.
 
 11~14行
-:   系统会为我们在页面上自动创建一些按钮`Save&Apply`,`Save`,`Reset`.我们仅仅将配置写入`/etc/config`下对应的文件是不够的,我们还希望可以根据这个配置进行一些操作.
+>   系统会为我们在页面上自动创建一些按钮`Save&Apply`,`Save`,`Reset`.我们仅仅将配置写入`/etc/config`下对应的文件是不够的,我们还希望可以根据这个配置进行一些操作.
 这部分代码的作用是,当你按下页面的`apply`按钮后,相当于在串口shell下输入`/etc/init.d/addtestd restart`
 
 ---
-###init.d
+### init.d
 上一节我们已经可以读写配置了,怎么根据配置来进行操作呢?这是我们这一节要谈的.我们来编辑`~/temp/addtest/files/etc/init.d/addtestd`这个文件.
 代码如下:
 
@@ -259,29 +258,29 @@ stop()
 ```
 
 第1行
-:   Linux 系统根据 "#!" 及该字串后面的信息确定该文件的类型,表示这个文件需要由/bin/sh和/etc/rc.common来解释执行.
+>   Linux 系统根据 "#!" 及该字串后面的信息确定该文件的类型,表示这个文件需要由/bin/sh和/etc/rc.common来解释执行.
 
 第2行
-:   表示启动的优先级,这里暂时用不到
+>   表示启动的优先级,这里暂时用不到
 
 4~17行
-:   是一个函数,主要作用是读取`/etc/config/addtest`中的内容,然后根据是否打开开关在第15行将配置传递给可执行文件`addtest`,由它根据配置执行指定的操作.
+>   是一个函数,主要作用是读取`/etc/config/addtest`中的内容,然后根据是否打开开关在第15行将配置传递给可执行文件`addtest`,由它根据配置执行指定的操作.
 读取配置的方法,我强烈推荐你阅读[官方文档](http://wiki.openwrt.org/doc/devel/config-scripting),精炼而简洁.
 获取布尔值类型:`config_get_bool 变量名 Section名 Section参数名`
 获取变量值:`config_get 变量名 Section名 Section参数名`
 
 19~23行
-:   对应于`/etc/init.d/addtestd start`.首先使用`config_load 配置文件名`的方法载入配置文件,然后使用`config_foreach 遍历函数名 Section类型`的方法,遍历配置文件中的Section.
+>   对应于`/etc/init.d/addtestd start`.首先使用`config_load 配置文件名`的方法载入配置文件,然后使用`config_foreach 遍历函数名 Section类型`的方法,遍历配置文件中的Section.
 
 25~30行
-:   对应于`/etc/init.d/addtestd stop`.找到`addtest`这个进程的进程号,然后杀死它
+>   对应于`/etc/init.d/addtestd stop`.找到`addtest`这个进程的进程号,然后杀死它
 
 备注
 :   前一节提到的`/etc/init.d/addtestd restart`中的`restart`命令,在`/etc/rc.common`进行了定义,简单来讲就是先执行了`stop`命令,再执行`start`命令.
 最后务必执行**`$sudo chmod 755 ~/temp/addtest/files/etc/init.d/addtestd`**.
 
 ---
-###src
+### src
 前一节,我们谈到`run_addtest`调用可执行文件`addtest`,现在我们编辑这部分内容
 
 ```
@@ -313,10 +312,14 @@ int main(int argc, char *argv[])
 ```
 
 这部分代码比较简短,我们不再解释.需要掌握的点有:
->1.`argc`和`argv[]`的使用方法
-2.`fopen`函数,`fclose`函数以及`fprintf`函数的使用方法
-3.`system`函数的使用方法
-4.`sleep`函数和`atoi`函数的使用方法,`argv[1]`的类型为`char`需要转换为整型.
+
+> 1.`argc`和`argv[]`的使用方法
+
+> 2.`fopen`函数,`fclose`函数以及`fprintf`函数的使用方法
+
+> 3.`system`函数的使用方法
+
+> 4.`sleep`函数和`atoi`函数的使用方法,`argv[1]`的类型为`char`需要转换为整型.
 
 通过这个可执行文件,我们周期性地将时间戳和内容写入了`/tmp/addtest`文件.
 最后我们写一个简单的Makefile:
@@ -339,7 +342,7 @@ clean :
 ```
 
 ---
-###View
+### View
 上一节,我们已经根据配置将指定的内容周期性地写入了`/tmp/addtest`.在**controller**那一节,我们的函数`action_info`读取了`/tmp/addtest`中的内容并访问指定页面`/usr/lib/lua/luci/view/addtest_info.htm`,同时将读取的内容通过变量`info`传递过去.
 下面我们来编辑这个页面,
 `$vim ~/temp/addtest/files/usr/lib/lua/luci/view/addtest_info.htm`
@@ -357,7 +360,7 @@ clean :
 这部分和传统的`html`很类似,我主要是根据其他页面照猫画虎,不是很美观.有机会还要加强这个方面的学习.
 
 ---
-###Makefile
+### Makefile
 不知不觉,我们居然已经将代码全部写完了,竟还有点恋恋不舍呢.下面我们用一个`Makefie`文件将它们打包生成一个ipk文件.
 
 ```
@@ -416,13 +419,13 @@ $(eval $(call BuildPackage,$(PKG_NAME)))
 Makefile的解释,请参见[拙作](http://www.cnblogs.com/chengyi818/p/4774043.html).我们这里稍作补充.
 
 26~29行
-:   由于luci会将模块加载到`/tmp`目录下运行,每次新加载luci模块后,需要执行`$rm -rf /tmp/luci*`.这里表示安装了ipk之后,将会自动执行删除命令,重新载入.
+>   由于luci会将模块加载到`/tmp`目录下运行,每次新加载luci模块后,需要执行`$rm -rf /tmp/luci*`.这里表示安装了ipk之后,将会自动执行删除命令,重新载入.
 
 39行
-:   $(1)是传入的参数,表示系统镜像目录,你可以将之视为路由器最后的文件系统.所以这句的意思就是将我们`files`下的内容拷贝到路由器的文件系统中.这也是我们为什么要建立一开始那么复杂的目录树的原因.
+>   $(1)是传入的参数,表示系统镜像目录,你可以将之视为路由器最后的文件系统.所以这句的意思就是将我们`files`下的内容拷贝到路由器的文件系统中.这也是我们为什么要建立一开始那么复杂的目录树的原因.
 
 ---
-###编译&安装
+### 编译&安装
 简直像裹脚布一样,又臭又长.不要说读了,我自己写的都快有点受不了了.读到这里的人真是辛苦了,下面到了我们收获果实的时候了.
 将文件拷贝到源码目录的`package`目录下.其余部分,请参考[拙作](http://www.cnblogs.com/chengyi818/p/4774043.html)
 
@@ -433,34 +436,39 @@ $cp ~/temp/addtest ~/openwrt/package
 把它拷贝到你的开发板中,试试看.
 
 ---
-###调试方法
+### 调试方法
 我们当然希望可以一次成功,不过世间不如意之事十之八九.我来谈谈我自己的调试方法.
 
 `src`部分
-:   `src`文件下有`Makefile`文件,你可以直接在编译机上执行`$make`生成可执行文件`addtest`,然后在编译机上`src`目录下执行`$./addtest 参数1 参数2`.最后记得执行`$make clean`.
+>   `src`文件下有`Makefile`文件,你可以直接在编译机上执行`$make`生成可执行文件`addtest`,然后在编译机上`src`目录下执行`$./addtest 参数1 参数2`.最后记得执行`$make clean`.
 
 `luci`部分
-:   将ipk安装到开发板后,可以通过串口或者ssh的方式登录开发板,然后直接在开发板中修改文件内容,再执行`$rm -rf /tmp/luci*`.最后重新载入设备页面.
+>   将ipk安装到开发板后,可以通过串口或者ssh的方式登录开发板,然后直接在开发板中修改文件内容,再执行`$rm -rf /tmp/luci*`.最后重新载入设备页面.
 
 ---
 
-##尾记
+## 尾记
 不知不觉到了分手的时候,竟感觉有些忧桑呢.
 
-###不足
+### 不足
 1. 我自己刚接触学习,难免很多不足
 2. 页面输入没有防呆机制
 
 多多包含:)
-###感谢
+### 感谢
 除了官方文档之外,这两篇博客给我很多指导:
 [开发OpenWrt路由器上LuCI的模块](http://www.tuicool.com/articles/zaUNfy),[ openwrt中luci学习笔记](http://blog.chinaunix.net/uid-23780428-id-4367351.html).
 我的同事宁财神给我们做了luci的框架介绍,同时在我的调试过程中,给予我很多帮助.
 最后感谢管工给出这样一个练习题,虽然很小巧,居然可以贯通整个知识体系.我现在还是为他的高屋建瓴感到惊叹.
-###Q&A
+
+### Q&A
 在整篇文章学习完成后,我们希望可以回答以下几个问题:
->1.MVC是什么?各部分有哪些功能?
-2.怎么在页面上指定位置做出一个子页面.
-3.怎么将配置写入到路由器中,又怎么读取?
-4.页面怎么和可执行文件关联起来?或者通俗地说,页面点了一下,开发板怎么就执行了命令.
-5.ipk怎么生成,安装过程中发生了什么?
+> 1.MVC是什么?各部分有哪些功能?
+
+> 2.怎么在页面上指定位置做出一个子页面.
+
+> 3.怎么将配置写入到路由器中,又怎么读取?
+
+> 4.页面怎么和可执行文件关联起来?或者通俗地说,页面点了一下,开发板怎么就执行了命令.
+
+> 5.ipk怎么生成,安装过程中发生了什么?
