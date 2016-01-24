@@ -1,7 +1,7 @@
 ---
 layout: post
 title: openwrt编译(4)_单个ipk编译过程
-category: 道术
+category: 道器
 tags: openwrt makefile
 comments: true
 analytics: true
