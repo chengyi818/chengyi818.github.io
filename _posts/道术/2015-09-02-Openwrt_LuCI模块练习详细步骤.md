@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Openwrt LuCI模块练习详细步骤
-category: 道器
+category: 道术
 tags: openwrt
 comments: true
 analytics: true

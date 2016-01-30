@@ -1,7 +1,7 @@
 ---
 layout: post
 title: openwrt编译(3)_主Makefile解析
-category: 道器
+category: 道术
 tags: makefile openwrt
 comments: true
 analytics: true
