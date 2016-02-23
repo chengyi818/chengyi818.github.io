@@ -19,6 +19,7 @@ analytics: true
 代码已经[开源](https://github.com/chengyi818/addtest),欢迎交流~
 
 ---
+
 ## 知识准备
 
 ### 源码编译及ipk生成
@@ -87,6 +88,7 @@ $cd ~/temp/addtest
 不要管为什么要这样,我们后面慢慢解释.
 
 ---
+
 ### controller
 前面我们提到,controller主要用于控制页面按钮位置,以及调用的功能.首先来编辑这个文件.
 
@@ -161,6 +163,7 @@ function index()
 [nixio接口手册](http://luci.subsignal.org/api/nixio/)
 
 ---
+
 ### UCI
 UCI是openwrt的配置管理机制,它将配置统一放到`/etc/config`文件夹下.详细地介绍请参考[这里](http://www.leiphone.com/news/201406/diy-a-smart-router-topic-system-configuration.html).
 下面来编辑这个文件
@@ -184,6 +187,7 @@ Section开始语法: `config '类型' '名字'`
 简单解释下,我们在`/etc/config`下新建一个名为`addtest`的配置文件,其中类型为`arguments`,名字省略.有两个键,一个名为`interval`用来存时间间隔.一个名为`content`用来存准备周期性输入的内容.
 
 ---
+
 ### Model
 在**controller**章节中,我们提到`cbi`会调用到`model`文件夹中的`addtest.lua`文件.下面我们来编辑它.
 
@@ -247,6 +251,7 @@ return m
 这部分代码的作用是,当你按下页面的`apply`按钮后,相当于在串口shell下输入`/etc/init.d/addtestd restart`
 
 ---
+
 ### init.d
 上一节我们已经可以读写配置了,怎么根据配置来进行操作呢?这是我们这一节要谈的.我们来编辑`~/temp/addtest/files/etc/init.d/addtestd`这个文件.
 代码如下:
@@ -312,6 +317,7 @@ stop()
 最后务必执行**`$sudo chmod 755 ~/temp/addtest/files/etc/init.d/addtestd`**.
 
 ---
+
 ### src
 前一节,我们谈到`run_addtest`调用可执行文件`addtest`,现在我们编辑这部分内容
 
@@ -374,6 +380,7 @@ clean :
 ```
 
 ---
+
 ### View
 上一节,我们已经根据配置将指定的内容周期性地写入了`/tmp/addtest`.在**controller**那一节,我们的函数`action_info`读取了`/tmp/addtest`中的内容并访问指定页面`/usr/lib/lua/luci/view/addtest_info.htm`,同时将读取的内容通过变量`info`传递过去.
 
@@ -393,6 +400,7 @@ clean :
 这部分和传统的`html`很类似,我主要是根据其他页面照猫画虎,不是很美观.有机会还要加强这个方面的学习.
 
 ---
+
 ### Makefile
 不知不觉,我们居然已经将代码全部写完了,竟还有点恋恋不舍呢.下面我们用一个`Makefie`文件将它们打包生成一个ipk文件.
 
@@ -460,6 +468,7 @@ Makefile的解释,请参见[拙作](http://www.cnblogs.com/chengyi818/p/4774043.
 >   $(1)是传入的参数,表示系统镜像目录,你可以将之视为路由器最后的文件系统.所以这句的意思就是将我们`files`下的内容拷贝到路由器的文件系统中.这也是我们为什么要建立一开始那么复杂的目录树的原因.
 
 ---
+
 ### 编译&安装
 简直像裹脚布一样,又臭又长.不要说读了,我自己写的都快有点受不了了.读到这里的人真是辛苦了,下面到了我们收获果实的时候了.
 将文件拷贝到源码目录的`package`目录下.其余部分,请参考[拙作](http://www.cnblogs.com/chengyi818/p/4774043.html)
@@ -471,6 +480,7 @@ $cp ~/temp/addtest ~/openwrt/package
 把它拷贝到你的开发板中,试试看.
 
 ---
+
 ### 调试方法
 我们当然希望可以一次成功,不过世间不如意之事十之八九.我来谈谈我自己的调试方法.
 
