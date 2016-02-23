@@ -8,7 +8,7 @@ analytics: true
 ---
 
 
-##前言
+## 前言
 又到了成胖子^_^每周一博的时间了.最近在学习openwrt luci方面的知识,为了贯穿整个知识体系,练习题目为:
 > 通过页面配置周期性地往/tmp/addtest文件写入内容和时间戳
 1.在web主页面的下拉菜单做一个按钮,进入设置页面;
@@ -18,12 +18,12 @@ analytics: true
 代码已经[开源](https://github.com/chengyi818/addtest),欢迎交流~
 
 ---
-##知识准备
+## 知识准备
 
 ### 源码编译及ipk生成
 这部分网上相关文章很多,也可以参见[拙作](http://www.cnblogs.com/chengyi818/p/4774043.html)
 
-###LuCI
+### LuCI
 首先回答一个问题:什么是Luci?
 
 ~~>LuCI是OpenWrt上的Web管理界面，LuCI采用了MVC三层架构，使用Lua脚本开发.~~
