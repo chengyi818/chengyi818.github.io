@@ -21,7 +21,7 @@ name: 一亭
 title: 祎婷之家
 description: 夜阑卧听风吹雨，铁马冰河入梦来
 url: http://chengyi818.github.io
-rss_url:
+rss_url: http://chengyi818.github.io
 
 # gavatar头像及Favicon
 gavatar: /public/img/ring.gif
