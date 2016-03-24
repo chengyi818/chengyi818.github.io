@@ -50,3 +50,7 @@ locals:
   about: 我们
   newest: 最新文章
   archive: 归档
+
+#增加了对emoji表情的支持
+gems:
+  - jemoji
