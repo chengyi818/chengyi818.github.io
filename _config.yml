@@ -42,7 +42,7 @@ active: 侣行
 
 # 首页除了最新文章外显示分类
 tags_display:
-  - lxc
+  - 工具说
 
 locals:
   index: 主页
