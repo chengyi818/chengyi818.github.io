@@ -31,7 +31,7 @@ favicon: /public/img/love.jpg
 # google analytics 设置
 ga:
   id: UA-72539373-1
-  url: yiting.co
+  url: yitinglove.cn
 
 # disqus 设置
 disqus:
