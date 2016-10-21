@@ -151,4 +151,5 @@ shopping完回到酒店，时间尚早，坐在阳台边享受会难得的午后
 ![泰国之行](http://ww1.sinaimg.cn/large/006kvZhRjw1f8yjs3nmb5j31kw23u4o4.jpg)
 
 我们在皇帝岛遇到了海豚群,运气真心不错,海豚共游艇齐飞.小视频附上:)
+
 <iframe height=498 width=510 src='http://player.youku.com/embed/XMTc2ODg4NDgzMg==' frameborder=0 'allowfullscreen'></iframe>
