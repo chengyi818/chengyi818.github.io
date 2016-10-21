@@ -1,6 +1,6 @@
 ﻿---
 layout: post
-title: 新场一日游
+title: 新场二日游
 category: 侣行
 comments: true
 analytics: true
