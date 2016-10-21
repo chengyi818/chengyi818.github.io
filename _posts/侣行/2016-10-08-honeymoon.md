@@ -6,9 +6,8 @@ comments: true
 analytics: true
 ---
 
-蜜月之旅-泰国普吉岛
-2016年10月11日
-![旅行](http://ww3.sinaimg.cn/large/006kvZhRjw1f8xym5bfp6j31jk1jk4n5.jpg) 
+![旅行](http://ww3.sinaimg.cn/large/006kvZhRjw1f8xym5bfp6j31jk1jk4n5.jpg)
+
 ### **Day1 上海出发到泰国普吉岛**
 
 晚上六点的飞机，为了在机场逛逛免税店，早早地打的来到了机场，LG则时肩负起了搬运工的重责大任，很是幸苦呢。
