@@ -1,6 +1,6 @@
 ﻿---
 layout: post
-title: 暹罗普吉--我的蜜月之旅
+title: 暹罗普吉_我的蜜月之旅
 category: 侣行
 comments: true
 analytics: true
