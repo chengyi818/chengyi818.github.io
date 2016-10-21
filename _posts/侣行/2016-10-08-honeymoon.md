@@ -1,7 +1,7 @@
 ﻿---
 layout: post
-title: 暹罗蜜月行
-category: 侣行
+title: 暹罗--密月之行
+category: 美食
 comments: true
 analytics: true
 ---
